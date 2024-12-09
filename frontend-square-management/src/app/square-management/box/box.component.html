@@ -1,0 +1,21 @@
+<div class="boxlist">
+  <div class="backlist mb-3">
+    <p-button label="Back to List" [routerLink]="['/squarebox']"></p-button>
+  </div>
+
+  <div class="flex capitalize text-5xl mt-2px font-bold justify-content-center">
+    <p>User Information</p>
+  </div>
+
+  <div class="flex justify-content-center">
+    <p-card class="shadow-2 hover:shadow-8" [style]="{ width: '300px' }">
+      <ng-container *ngIf="square; else loading">
+        <p class="text-1xl">{{ square.id }}</p>
+        <p class="text-center font-bold capitalize text-2xl">{{ square.title }}</p>
+      </ng-container>
+      <ng-template #loading>
+        <p>Loading...</p>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

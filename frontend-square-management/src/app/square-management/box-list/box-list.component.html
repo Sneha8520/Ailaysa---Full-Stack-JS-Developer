@@ -1,0 +1,60 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+
+<div class="flex justify-content-end">
+  <p-button (onClick)="showDialog()" label="View Message" />
+  <p-dialog
+    header="Ailaysa Team"
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '50rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  >
+    <p>
+      Thank you for giving me this opportunity to work on this project.
+      This project is built using the following technologies:
+    </p>
+    <ul>
+      <li><strong>UI:</strong> HTML5, CSS3, Bootstrap, and PrimeNG</li>
+      <li><strong>Frontend:</strong> Angular</li>
+      <li><strong>Backend:</strong> Node.js and Express.js</li>
+      <li><strong>Database:</strong> MySQL</li>
+    </ul>
+    <p>
+      I have implemented a feature to manage team members efficiently.
+      The dialog showcases an example of a user-friendly and responsive design.
+    </p>
+    <p>
+      Thank you once again, <strong class="text-xl">Ilangoven Chinnusamy</strong>, for this opportunity!
+    </p>
+  </p-dialog>
+</div>
+
+<div class="field">
+  <input
+    type="text"
+    pInputText
+    [(ngModel)]="newSquareTitle"
+    placeholder="Enter square title"
+    style="width: 150px;"
+  />
+  <p-button label="Add" (click)="addSquare()" style="width: 100px;"></p-button>
+</div>
+
+<div class="squarebox">
+  <div *ngFor="let square of squares; let i = index" class="square">
+    <span class="number">{{ i + 1 }}</span>
+    <button
+      pButton
+      pRipple
+      icon="pi pi-times"
+      class="delete-btn"
+      (click)="deleteSquare(i)"
+    ></button>
+
+    <!-- Link the square title to its detailed view -->
+    <div class="title">
+      <a [routerLink]="['/box', square.id]" class="custom-link">{{ square.title }}</a>
+    </div>
+  </div>
+</div>
